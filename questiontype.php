@@ -898,6 +898,14 @@ class qtype_stack extends question_type {
         return $parts;
     }
 
+    public function break_down_stats_and_response_analysis_by_variant($questiondata) {
+        if (!preg_match('~\brand~', $questiondata->options->questionvariables)) {
+            return false;
+        } else {
+            return (count($questiondata->deployedseeds) > 0);
+        }
+    }
+
     /**
      * Helper method used by {@link export_to_xml()}.
      * @param qformat_xml $format the importer/exporter object.
